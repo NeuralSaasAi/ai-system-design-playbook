@@ -1,0 +1,47 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Weekly external link check, Mondays 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  content:
+    name: Case studies and markdown
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Checker and issue form tests
+        run: uv run --python 3.12 --with pytest --with pyyaml pytest -q scripts/tests
+      - name: Case study format, catalog, links, GFM-only syntax
+        run: python3 scripts/check_case_studies.py
+      - name: Markdown lint
+        uses: DavidAnson/markdownlint-cli2-action@v20
+        with:
+          globs: "**/*.md"
+
+  links:
+    name: External links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.sha }}
+          restore-keys: lychee-
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          # Pinned: lychee.toml uses the 0.24 config format (include_fragments = "full")
+          lycheeVersion: v0.24.2
+          args: --config lychee.toml --cache --max-cache-age 3d "./**/*.md"
+          fail: true

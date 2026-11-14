@@ -1,0 +1,11 @@
+{
+  // Rules live in .markdownlint.json; this file only controls which files are linted.
+  "ignores": [
+    "**/node_modules/**",
+    "**/.venv/**",
+    "**/.pytest_cache/**",
+    "scripts/tests/fixtures/**",
+    "IMPLEMENTATION_TRACKER.md",
+    "LICENSE"
+  ]
+}

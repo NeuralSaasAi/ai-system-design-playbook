@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question about a basic concept (tokens, embeddings, RAG, prompting)
+    url: https://github.com/NeuralSaasAi/ai-engineering-playbook
+    about: Part 1 explains the building blocks. Ask basic questions there.

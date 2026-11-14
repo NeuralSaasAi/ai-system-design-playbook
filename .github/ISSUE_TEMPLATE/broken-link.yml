@@ -1,0 +1,24 @@
+name: Broken or outdated link
+description: Report a link that is dead or now points somewhere unexpected.
+title: "[Link] "
+labels: ["broken-link"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Which page?
+      placeholder: e.g. case-studies/03-voice-agent-call-center.md
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: The link
+      placeholder: https://
+    validations:
+      required: true
+  - type: input
+    id: replacement
+    attributes:
+      label: Correct link, if you know it
+      placeholder: https://

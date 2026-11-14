@@ -1,0 +1,17 @@
+.DS_Store
+node_modules/
+.lycheecache
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets and local data
+.env
+
+# Maintainer-only working notes (not published)
+IMPLEMENTATION_TRACKER.md

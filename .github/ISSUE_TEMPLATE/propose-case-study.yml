@@ -1,0 +1,49 @@
+name: Propose or claim a case study
+description: Suggest a new AI system design, or say you will write one that is already planned.
+title: "[Case study] "
+labels: ["case-study"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you doing?
+      options:
+        - Proposing a new case study
+        - Claiming a planned case study from the README catalog
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Name of the system
+      placeholder: e.g. Email triage agent for a 5,000-person company
+    validations:
+      required: true
+  - type: textarea
+    id: scenario
+    attributes:
+      label: The scenario
+      description: Who uses it, what is painful today, and roughly what scale (users, requests per day).
+    validations:
+      required: true
+  - type: textarea
+    id: patterns
+    attributes:
+      label: What would a reader learn that the existing case studies don't teach?
+      description: Name the patterns, for example queues for long jobs, per-tenant isolation, streaming audio.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources you plan to use
+      description: Official docs, engineering blogs, papers, standards.
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Before you submit
+      options:
+        - label: I will write it in my own words (nothing copied from other repos, courses or books).
+          required: true
+        - label: I have no affiliation with a product I plan to feature, or I will disclose it in the pull request.
+          required: true

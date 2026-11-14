@@ -1,0 +1,34 @@
+# Link checker config. Docs: https://lychee.cli.rs/usage/config/
+max_redirects = 10
+max_retries = 3
+retry_wait_time = 5
+timeout = 30
+max_concurrency = 8
+# Some sites reject requests without a browser user agent
+user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
+# 403 and 429 usually mean bot protection or rate limiting, not a dead link
+accept = ["200..=299", "403", "429"]
+# Check #anchors in links between our own markdown files
+include_fragments = "full"
+exclude_path = [
+  "node_modules",
+  ".git",
+  ".venv",
+  "CODE_OF_CONDUCT.md",
+  "IMPLEMENTATION_TRACKER.md",
+  "scripts/tests/fixtures",
+]
+# Domains that block automated checks or rate-limit CI runners
+exclude = [
+  "^https://(www\\.)?reddit\\.com",
+  "^https://(www\\.)?x\\.com",
+  "^https://(www\\.)?twitter\\.com",
+  "^https://(www\\.)?linkedin\\.com",
+  "^https://(www\\.)?medium\\.com",
+  "^https://github\\.com/NeuralSaasAi/ai-system-design-playbook/(issues|actions|edit|blob|discussions)",
+  # TEMPORARY: Part 1 is not public yet. Remove this line once ai-engineering-playbook is published.
+  "^https://github\\.com/NeuralSaasAi/ai-engineering-playbook",
+  "^https://img\\.shields\\.io",
+  "^http://localhost",
+  "^http://127\\.0\\.0\\.1",
+]
