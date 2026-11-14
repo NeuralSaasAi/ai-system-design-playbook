@@ -47,45 +47,45 @@ Every case study targets a different industry or problem, so each visit teaches 
 | # | Case study | Industry | Problem | Key patterns | Status |
 |---|---|---|---|---|---|
 | 1 | [Customer support agent with human handoff](case-studies/01-customer-support-agent.md) | Software (SaaS) | A small-business software company answers 500K conversations a month | Model cascade, grounded answers, signal-based escalation, safe tools, warm handoff | 🚧 Draft |
-| 2 | WhatsApp commerce agent | Retail (D2C) | An Indian home-goods brand handles 2M chats a month in Hindi, English and Hinglish | 24-hour message window, templates, webhooks, idempotency, catalog and order tools | 📝 Planned |
-| 3 | Real-time voice agent | Telecom | A mobile operator's call center takes 5,000 calls at once, each turn answered in under 800 ms | Streaming speech and language models, turn detection, barge-in, telephony | 📝 Planned |
-| 5 | AI tutor for school students | Education | 1M students in India at a very low cost per student | Curriculum-grounded answers, student memory, safety for minors, hints instead of answers | 📝 Planned |
-| 17 | Farmer advisory with photo diagnosis | Agriculture | 2M farmers with weak networks ask about crop disease, weather and prices | Image diagnosis, local-language voice, offline-first, SMS fallback | 📝 Planned |
-| 18 | Citizen services assistant | Government | A state portal serves 20M citizens in 12 languages | Strict grounding in official sources, audit trail, accessibility, data residency | 📝 Planned |
+| 2 | [WhatsApp commerce agent](case-studies/02-whatsapp-commerce-agent.md) | Retail (D2C) | An Indian home-goods brand handles 2M chats a month in Hindi, English and Hinglish | 24-hour message window, templates, webhooks, idempotency, catalog and order tools | 🚧 Draft |
+| 3 | [Real-time voice agent](case-studies/03-telecom-voice-agent.md) | Telecom | A mobile operator's call center takes 5,000 calls at once, each turn answered in under 800 ms | Streaming speech and language models, turn detection, barge-in, telephony | 🚧 Draft |
+| 5 | [AI tutor for school students](case-studies/05-ai-tutor.md) | Education | 1M students in India at a very low cost per student | Curriculum-grounded answers, student memory, safety for minors, hints instead of answers | 🚧 Draft |
+| 17 | [Farmer advisory with photo diagnosis](case-studies/17-farmer-advisory.md) | Agriculture | 2M farmers with weak networks ask about crop disease, weather and prices | Image diagnosis, local-language voice, offline-first, SMS fallback | 🚧 Draft |
+| 18 | [Citizen services assistant](case-studies/18-citizen-services-assistant.md) | Government | A state portal serves 20M citizens in 12 languages | Strict grounding in official sources, audit trail, accessibility, data residency | 🚧 Draft |
 
 ### Knowledge and documents
 
 | # | Case study | Industry | Problem | Key patterns | Status |
 |---|---|---|---|---|---|
-| 4 | Law firm knowledge assistant | Legal | 2,000 lawyers search 3M documents, with client matters walled off from each other | Permission-aware retrieval, page-level citations, no-leak behavior, incremental sync | 📝 Planned |
-| 6 | Clinical voice scribe | Healthcare | 2,000 clinicians turn visit audio into notes | Speech-to-text, health-data rules, notes linked to source audio, clinician sign-off | 📝 Planned |
-| 8 | Claims processing agent | Insurance | A motor insurer handles 80K claims a month with photos, PDFs and forms | Multimodal extraction, confidence thresholds, straight-through processing, adjuster review | 📝 Planned |
-| 11 | Text-to-SQL analytics agent | Business analytics | 500 analysts query 3,000 tables in plain English | Schema retrieval, query validation, read-only access, row-level security | 📝 Planned |
+| 4 | [Law firm knowledge assistant](case-studies/04-law-firm-knowledge-assistant.md) | Legal | 2,000 lawyers search 3M documents, with client matters walled off from each other | Permission-aware retrieval, page-level citations, no-leak behavior, incremental sync | 🚧 Draft |
+| 6 | [Clinical voice scribe](case-studies/06-clinical-voice-scribe.md) | Healthcare | 2,000 clinicians turn visit audio into notes | Speech-to-text, health-data rules, notes linked to source audio, clinician sign-off | 🚧 Draft |
+| 8 | [Claims processing agent](case-studies/08-claims-processing-agent.md) | Insurance | A motor insurer handles 80K claims a month with photos, PDFs and forms | Multimodal extraction, confidence thresholds, straight-through processing, adjuster review | 🚧 Draft |
+| 11 | [Text-to-SQL analytics agent](case-studies/11-text-to-sql-agent.md) | Business analytics | 500 analysts query 3,000 tables in plain English | Schema retrieval, query validation, read-only access, row-level security | 🚧 Draft |
 
 ### Agents that take action
 
 | # | Case study | Industry | Problem | Key patterns | Status |
 |---|---|---|---|---|---|
-| 10 | How a coding agent works | Developer tools | From one developer to 10,000 seats | Agent loop, tools, sandbox, code index, context compaction, sub-agents | 📝 Planned |
-| 13 | Trip planning and booking agent | Travel | 300K trip chats a month against live prices and seats | Multi-step planning, changing inventory, undo steps for failed bookings, durable execution | 📝 Planned |
-| 14 | Recruiting and screening agent | Human resources | A staffing firm receives 200K applications a month | Rubric-based scoring, bias testing, human decision, audit trail, privacy | 📝 Planned |
-| 16 | Shipment exceptions agent | Logistics | A freight forwarder gets 10K delay and customs emails a day | Event-driven agent, email parsing, system integration, approvals, deadline clocks | 📝 Planned |
-| 19 | Security alert triage agent | Cybersecurity | A security team faces 50K alerts a day | Tool use over logs, untrusted input, human approval for response actions, evidence trail | 📝 Planned |
+| 10 | [How a coding agent works](case-studies/10-coding-agent.md) | Developer tools | From one developer to 10,000 seats | Agent loop, tools, sandbox, code index, context compaction, sub-agents | 🚧 Draft |
+| 13 | [Trip planning and booking agent](case-studies/13-travel-booking-agent.md) | Travel | 300K trip chats a month against live prices and seats | Multi-step planning, changing inventory, undo steps for failed bookings, durable execution | 🚧 Draft |
+| 14 | [Recruiting and screening agent](case-studies/14-recruiting-agent.md) | Human resources | A staffing firm receives 200K applications a month | Rubric-based scoring, bias testing, human decision, audit trail, privacy | 🚧 Draft |
+| 16 | [Shipment exceptions agent](case-studies/16-shipment-exceptions-agent.md) | Logistics | A freight forwarder gets 10K delay and customs emails a day | Event-driven agent, email parsing, system integration, approvals, deadline clocks | 🚧 Draft |
+| 19 | [Security alert triage agent](case-studies/19-security-alert-triage.md) | Cybersecurity | A security team faces 50K alerts a day | Tool use over logs, untrusted input, human approval for response actions, evidence trail | 🚧 Draft |
 
 ### Decisions, safety and sensing at scale
 
 | # | Case study | Industry | Problem | Key patterns | Status |
 |---|---|---|---|---|---|
-| 7 | Fraud detection with explanations | Banking | A decision in 100 ms at 10K transactions a second | ML and rules on the hot path, language model explanations off it, feedback labels, drift | 📝 Planned |
-| 9 | Defect and maintenance copilot | Manufacturing | 12 plants with edge cameras and 30 years of manuals | Vision at the edge, retrieval over manuals plus sensor data, offline mode | 📝 Planned |
-| 12 | Content moderation at scale | Social media | 50M posts a day | Cheap-to-expensive classifier cascade, policy as prompt, appeals | 📝 Planned |
-| 15 | Home energy advisor | Energy | A utility with 3M smart meters sends savings advice | Numbers computed by code, language model explains, batch insights, proactive messages | 📝 Planned |
+| 7 | [Fraud detection with explanations](case-studies/07-fraud-detection.md) | Banking | A decision in 100 ms at 10K transactions a second | ML and rules on the hot path, language model explanations off it, feedback labels, drift | 🚧 Draft |
+| 9 | [Defect and maintenance copilot](case-studies/09-manufacturing-copilot.md) | Manufacturing | 12 plants with edge cameras and 30 years of manuals | Vision at the edge, retrieval over manuals plus sensor data, offline mode | 🚧 Draft |
+| 12 | [Content moderation at scale](case-studies/12-content-moderation.md) | Social media | 50M posts a day | Cheap-to-expensive classifier cascade, policy as prompt, appeals | 🚧 Draft |
+| 15 | [Home energy advisor](case-studies/15-home-energy-advisor.md) | Energy | A utility with 3M smart meters sends savings advice | Numbers computed by code, language model explains, batch insights, proactive messages | 🚧 Draft |
 
 ### Platform
 
 | # | Case study | Industry | Problem | Key patterns | Status |
 |---|---|---|---|---|---|
-| 20 | Company AI gateway and model router | Enterprise IT platform | 200 internal apps share model access and one budget | Token-based rate limits, fallback, cost attribution, semantic cache, policy enforcement | 📝 Planned |
+| 20 | [Company AI gateway and model router](case-studies/20-ai-gateway-router.md) | Enterprise IT platform | 200 internal apps share model access and one budget | Token-based rate limits, fallback, cost attribution, semantic cache, policy enforcement | 🚧 Draft |
 
 More are coming, for example deep research for investment analysts, self-hosted model serving on GPUs, multi-tenant RAG platforms, eval-gated releases, AI answer engines and computer-use agents. [Suggest one](https://github.com/NeuralSaasAi/ai-system-design-playbook/issues/new?template=propose-case-study.yml). The only rule: it must target an industry or problem the catalog doesn't cover yet.
 
