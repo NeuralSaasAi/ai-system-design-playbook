@@ -45,7 +45,7 @@ Status: 📝 planned, 🚧 draft, ✅ reviewed. Want one? See [Contributing](CON
 
 | # | Case study | Problem | Key patterns | Status |
 |---|---|---|---|---|
-| 1 | Customer support agent with human handoff | A B2B software company answers 500K tickets a month | Intent routing, tiered models, confidence-based escalation | 📝 Planned |
+| 1 | [Customer support agent with human handoff](case-studies/01-customer-support-agent.md) | A small-business software company answers 500K conversations a month | Model cascade, grounded answers, signal-based escalation, safe tools, warm handoff | 🚧 Draft |
 | 2 | WhatsApp commerce and support agent | An Indian D2C brand handles 2M chats a month in Hindi, English and Hinglish | 24-hour message window, templates, webhooks, idempotency, human handoff | 📝 Planned |
 | 3 | Real-time voice agent for a call center | 5,000 calls at once, each turn answered in under 800 ms | Streaming speech and language models, turn detection, barge-in, telephony | 📝 Planned |
 | 11 | Clinical voice scribe | 2,000 clinicians dictate visit notes | Ambient audio, health-data rules, grounded notes, clinician sign-off | 📝 Planned |
