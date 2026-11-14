@@ -61,6 +61,34 @@ flowchart TD
   Orchestrator --> Tools
 ```
 
+### Words used in this case study
+
+*Two or three plain sentences saying this table is for readers who are new to AI. Then a table of every technical term a newcomer may not know, one plain sentence each. Include at least: token, embedding, RAG, cache, memory, guardrail, p95, and any term specific to this design.*
+
+| Word | What it means here |
+|---|---|
+| Example: token | A small piece of text (about three quarters of a word) that a model reads and writes. Models are priced per token. |
+
+### Layers and tools
+
+*Two or three plain sentences on how the system splits into layers, and a table that separates the ideas people mix up (for example memory, retrieval and cache). Then one `####` sub-section per layer. The usual layers are: gateway, checks and guardrails, router, models, retrieval (RAG), memory, caches, tools and actions, orchestration, human handoff, and observability and evals. Skip the ones you don't need.*
+
+*For each layer, write: (1) what it is in plain words, (2) what it does in this design, what it stores and how big it is, (3) a table of tool categories with a few example tools and when to pick each, (4) your choice for the first version, and (5) what goes wrong. Name the category first and the examples second, because tools change faster than categories. Add "as of" and the month for any example list.*
+
+#### Example layer name
+
+*Plain words. What it does here. Then:*
+
+| Category | Examples | Pick it when |
+|---|---|---|
+| Example category | Example tool A, example tool B | The situation where this category fits |
+
+*First version: one sentence. What goes wrong: one sentence.*
+
+### Build order
+
+*Two or three plain sentences on why you build in stages. Then a numbered list of steps a small team could follow, from the simplest version that works to the full design. Each step says what to build, what to test, and what "done" looks like.*
+
 ## One request, end to end
 
 *Two or three sentences introducing one concrete request. Then a mermaid sequence diagram and a latency budget table (step, budget in ms, what happens if it overruns).*

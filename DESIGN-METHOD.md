@@ -95,6 +95,8 @@ flowchart LR
 
 Draw your own version with real names for each box. Keep it to one page.
 
+Then, for each box, write down three things: what it does in plain words, which category of tool fills it (for example "vector database" or "key-value store"), and what you would pick for a first version. Naming the category before the product keeps the design from changing when a product does.
+
 ## Step 6: Walk one request
 
 Pick one realistic request and follow it through every box, with a time budget for each step. A sequence diagram works well.

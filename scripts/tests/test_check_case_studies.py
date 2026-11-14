@@ -25,7 +25,7 @@ last_reviewed: 2026-11-14
 
 def build(status: str = "reviewed", *, drop: str | None = None, swap: bool = False,
           details: bool = True, extra: str = "", numbers: str = "Cost = tokens x price.",
-          words: int = 0) -> str:
+          words: int = 0, drop_sub: str | None = None) -> str:
     """Build a valid case study, then let a test break one thing."""
     parts = [FRONT.format(status=status), "# Customer support agent\n"]
     names = list(SECTIONS)
@@ -43,6 +43,9 @@ def build(status: str = "reviewed", *, drop: str | None = None, swap: bool = Fal
             parts.append(numbers + "\n")
         if name == "Architecture":
             parts.append("```mermaid\nflowchart TD\n  A --> B\n```\n")
+            for sub in cc.REQUIRED_ARCHITECTURE_SUBSECTIONS:
+                if sub != drop_sub:
+                    parts.append(f"### {sub}\n\nPlain words about this part.\n")
         if name == "One request, end to end":
             parts.append("```mermaid\nsequenceDiagram\n  A->>B: hi\n```\n")
         if name == "Interview mode":
@@ -171,8 +174,21 @@ def test_reviewed_case_study_too_short(tmp_path):
     assert any("at least" in m and "words" in m for m in messages(root))
 
 
+@pytest.mark.parametrize("sub", ["Words used in this case study", "Layers and tools", "Build order"])
+def test_architecture_needs_subsection(tmp_path, sub):
+    root = write_repo(tmp_path, {"01-support.md": build("draft", drop_sub=sub)}, readme_for("🚧"))
+    assert any(f"### {sub}" in m for m in messages(root))
+
+
+def test_subsection_inside_code_fence_does_not_count(tmp_path):
+    text = build("draft", drop_sub="Build order").replace(
+        "## Architecture\n", "## Architecture\n\n```text\n### Build order\n```\n", 1)
+    root = write_repo(tmp_path, {"01-support.md": text}, readme_for("🚧"))
+    assert any("### Build order" in m for m in messages(root))
+
+
 def test_case_study_too_long(tmp_path):
-    root = write_repo(tmp_path, {"01-support.md": build("draft", words=8000)}, readme_for("🚧"))
+    root = write_repo(tmp_path, {"01-support.md": build("draft", words=12000)}, readme_for("🚧"))
     assert any("split" in m for m in messages(root))
 
 

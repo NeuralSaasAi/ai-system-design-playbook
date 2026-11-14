@@ -10,7 +10,7 @@ A beginner should be able to follow the first paragraph of every section. A seni
 
 ## How a case study is built
 
-Every case study uses [templates/case-study-template.md](templates/case-study-template.md). The 17 sections are fixed and in order. `scripts/check_case_studies.py` enforces the structure, so CI fails if a section is missing or out of order.
+Every case study uses [templates/case-study-template.md](templates/case-study-template.md). The 17 sections are fixed and in order, and `Architecture` has three required sub-sections (see [Make it buildable for a newcomer](#make-it-buildable-for-a-newcomer)). `scripts/check_case_studies.py` enforces the structure, so CI fails if a section is missing or out of order.
 
 Each section follows the same shape:
 
@@ -29,6 +29,16 @@ The checker rejects a section that opens with a table, list or code block (excep
 - **Name the mechanism.** "A cache keyed on the first 2,000 tokens of the prompt" beats "smart caching".
 - **Original writing.** Reference repos, books and courses can inspire which topics we cover. Never copy their text, structure, diagrams or code. Short quotes (under 30 words) are fine when marked and cited.
 - **No promotion.** No course, product, mentoring or affiliate links in case studies. Tools are named because readers will meet them at work.
+
+## Make it buildable for a newcomer
+
+A reader with little AI background should finish a case study knowing most of what it takes to build the system. Every `## Architecture` section therefore has three sub-sections, and the checker requires them:
+
+- **Words used in this case study.** A table with one plain sentence per technical term.
+- **Layers and tools.** For each layer (retrieval, memory, caches, models, tools, guardrails and so on): what it is in plain words, what it does in this design, categories of tools with example names, your first-version choice, and what goes wrong. Separate ideas people confuse, such as memory, retrieval and cache.
+- **Build order.** Numbered stages, from the simplest version that works to the full design.
+
+Name the tool category first and the example tools second. Examples are not endorsements, so say "examples, as of November 2026". Never list a tool you have not checked is still maintained. Explain what a category is for before listing names.
 
 ## Scenarios are fictional, and say so
 

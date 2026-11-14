@@ -12,6 +12,7 @@ Every file in case-studies/:
   - is listed in the README catalog with a matching status emoji
   Unless its status is `planned`, it also:
   - has the 17 template sections as `## ` headings, in order
+  - has `### Words used in this case study`, `### Layers and tools` and `### Build order` inside `## Architecture`
   - opens each section with plain sentences (not a table, list, code block or sub-heading)
   - shows a formula in `Numbers`
   - puts interview answers inside <details> blocks
@@ -50,12 +51,20 @@ REQUIRED_SECTIONS = [
     "Concepts used",
     "Further reading",
 ]
+# Sub-sections (`### `) that every non-planned `## Architecture` must contain.
+# They make each case study usable by a reader with little AI background:
+# plain-words glossary, the layers with tool categories, and a build order.
+REQUIRED_ARCHITECTURE_SUBSECTIONS = [
+    "Words used in this case study",
+    "Layers and tools",
+    "Build order",
+]
 # These sections may start with a table (the at-a-glance summary row).
 MAY_START_WITH_TABLE = {"At a glance"}
 LEVELS = {"intermediate", "advanced"}
 STATUSES = {"planned": "📝", "draft": "🚧", "reviewed": "✅"}
 MIN_WORDS_REVIEWED = 2500
-MAX_WORDS = 7000
+MAX_WORDS = 11000
 MIN_DIAGRAMS_REVIEWED = 2
 BANNED_WORDS = [
     "robust", "leverage", "leverages", "leveraged", "leveraging", "delve", "delves",
@@ -216,6 +225,12 @@ def check_case_study(path: Path, text: str, strict_length: bool = True) -> list[
         first = next((ln for ln in content[name].splitlines() if ln.strip()), "")
         if not first or NOT_PROSE.match(first):
             problems.append(Problem(path, f"`{name}` must open with plain sentences before any table, list or code"))
+
+    if "Architecture" in content:
+        subs = re.findall(r"^###\s+(.+?)\s*$", strip_fences_keep_positions(content["Architecture"]), re.M)
+        for needed in REQUIRED_ARCHITECTURE_SUBSECTIONS:
+            if needed not in subs:
+                problems.append(Problem(path, f"`## Architecture` is missing the sub-section `### {needed}`"))
 
     if "Numbers" in content and "=" not in strip_fences_keep_positions(content["Numbers"]) \
             and "=" not in content["Numbers"]:
