@@ -28,6 +28,10 @@ exclude = [
   "^https://github\\.com/NeuralSaasAi/ai-system-design-playbook/(issues|actions|edit|blob|discussions)",
   # TEMPORARY: Part 1 is not public yet. Remove this line once ai-engineering-playbook is published.
   "^https://github\\.com/NeuralSaasAi/ai-engineering-playbook",
+  # Meta developer docs answer 400 to automated requests
+  "^https://developers\\.facebook\\.com",
+  # NCERT's TLS chain is not trusted by CI runners
+  "^https://ncert\\.nic\\.in",
   "^https://img\\.shields\\.io",
   "^http://localhost",
   "^http://127\\.0\\.0\\.1",
