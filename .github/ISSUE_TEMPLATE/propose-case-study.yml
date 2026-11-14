@@ -19,6 +19,14 @@ body:
       placeholder: e.g. Email triage agent for a 5,000-person company
     validations:
       required: true
+  - type: input
+    id: industry
+    attributes:
+      label: Industry or problem
+      description: The one industry or problem this targets. Every case study must be different from the ones in the README catalog.
+      placeholder: e.g. Logistics (shipment exceptions)
+    validations:
+      required: true
   - type: textarea
     id: scenario
     attributes:
@@ -29,7 +37,7 @@ body:
   - type: textarea
     id: patterns
     attributes:
-      label: What would a reader learn that the existing case studies don't teach?
+      label: How is it different from the existing case studies, and what would a reader learn?
       description: Name the patterns, for example queues for long jobs, per-tenant isolation, streaming audio.
     validations:
       required: true

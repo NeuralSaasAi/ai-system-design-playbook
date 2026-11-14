@@ -2,7 +2,8 @@
 title: Customer support agent with human handoff
 level: advanced
 status: draft
-category: Conversational and voice
+category: Talking to customers
+industry: Software (SaaS)
 last_reviewed: 2026-11-14
 ---
 
@@ -733,7 +734,7 @@ Basics in Part 1:
 
 Advanced ideas introduced here: the model cascade, signal-based escalation, grounding checks, idempotency keys for write tools, warm handoff bundles, canary releases with automatic rollback, and cost per point of automation.
 
-Related case studies in this playbook: the WhatsApp agent (02) adds channel rules and Indian languages, and the enterprise knowledge assistant (04) goes deeper on access control and syncing documents.
+Related case studies in this playbook: the retail WhatsApp agent (02) adds channel rules and Indian languages, and the legal knowledge assistant (04) goes deeper on access control and syncing documents.
 
 ## Further reading
 

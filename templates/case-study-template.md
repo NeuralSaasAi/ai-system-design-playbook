@@ -2,7 +2,8 @@
 title: Short name of the system, for example "Customer support agent with human handoff"
 level: advanced
 status: draft
-category: Conversational and support
+category: Talking to customers
+industry: Name the one industry or problem this targets, for example Healthcare
 last_reviewed: 2026-11-14
 ---
 

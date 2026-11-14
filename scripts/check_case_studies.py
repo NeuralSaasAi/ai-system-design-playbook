@@ -8,7 +8,9 @@ Every markdown file in the repo:
   - links to other files in this repo with relative paths (and heading anchors) that exist
 
 Every file in case-studies/:
-  - starts with front matter: title, level, status, category, last_reviewed
+  - starts with front matter: title, level, status, category, industry, last_reviewed
+  - targets a different industry or problem from every other case study (front matter `industry`
+    values are unique, and so are the values in the README catalog's Industry column)
   - is listed in the README catalog with a matching status emoji
   Unless its status is `planned`, it also:
   - has the 17 template sections as `## ` headings, in order
@@ -180,9 +182,9 @@ def strip_fences_keep_positions(text: str) -> str:
 def check_front_matter(path: Path, text: str) -> tuple[dict[str, str] | None, str, list[Problem]]:
     meta, body = split_front_matter(text)
     if meta is None:
-        return None, text, [Problem(path, "missing YAML front matter (title, level, status, category, last_reviewed)")]
+        return None, text, [Problem(path, "missing YAML front matter (title, level, status, category, industry, last_reviewed)")]
     problems: list[Problem] = []
-    for key in ("title", "level", "status", "category", "last_reviewed"):
+    for key in ("title", "level", "status", "category", "industry", "last_reviewed"):
         if not meta.get(key):
             problems.append(Problem(path, f"front matter is missing `{key}`"))
     if meta.get("level") and meta["level"] not in LEVELS:
@@ -272,11 +274,51 @@ def check_catalog(root: Path, studies: list[tuple[Path, str]]) -> list[Problem]:
     return problems
 
 
+def _duplicates(pairs: list[tuple[str, str]]) -> list[tuple[str, list[str]]]:
+    """pairs of (industry, where). Return industries that appear more than once."""
+    seen: dict[str, list[str]] = {}
+    label: dict[str, str] = {}
+    for industry, where in pairs:
+        key = industry.strip().lower()
+        if not key:
+            continue
+        seen.setdefault(key, []).append(where)
+        label.setdefault(key, industry.strip())
+    return [(label[k], v) for k, v in seen.items() if len(v) > 1]
+
+
+def check_industries(root: Path, file_industries: list[tuple[str, str]]) -> list[Problem]:
+    """Every case study must target a different industry or problem."""
+    problems: list[Problem] = []
+    for industry, where in _duplicates(file_industries):
+        problems.append(Problem(Path("case-studies"),
+                                f"industry `{industry}` is used by {', '.join(where)}; each case study must target a different industry or problem"))
+    readme = root / "README.md"
+    if readme.exists():
+        column = None
+        rows: list[tuple[str, str]] = []
+        for line in readme.read_text(encoding="utf-8").splitlines():
+            if not line.startswith("|"):
+                column = None
+                continue
+            cells = [c.strip() for c in line.strip().strip("|").split("|")]
+            if any(c.lower() == "industry" for c in cells):
+                column = next(i for i, c in enumerate(cells) if c.lower() == "industry")
+                continue
+            if column is not None and cells and cells[0].isdigit() and len(cells) > column:
+                rows.append((cells[column], f"catalog row {cells[0]}"))
+        for industry, where in _duplicates(rows):
+            problems.append(Problem(Path("README.md"),
+                                    f"industry `{industry}` appears in {', '.join(where)}; each case study must target a different industry or problem"))
+    return problems
+
+
 def check_repo(root: Path) -> list[Problem]:
     root = root.resolve()
     problems: list[Problem] = []
     slug_cache: dict[Path, set[str]] = {}
     studies: list[tuple[Path, str]] = []
+    file_industries: list[tuple[str, str]] = []
     for path in iter_markdown(root):
         text = path.read_text(encoding="utf-8")
         rel = path.relative_to(root)
@@ -288,7 +330,9 @@ def check_repo(root: Path) -> list[Problem]:
             problems += [Problem(rel, p.message) for p in check_case_study(path, text)]
             meta, _ = split_front_matter(text)
             studies.append((rel, (meta or {}).get("status", "")))
+            file_industries.append(((meta or {}).get("industry", ""), rel.name))
     problems += check_catalog(root, studies)
+    problems += check_industries(root, file_industries)
     return problems
 
 

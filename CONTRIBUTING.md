@@ -24,6 +24,7 @@ New to pull requests? Click the pencil icon on any page on GitHub, make your edi
 ## What we accept
 
 - Original writing. Don't copy from other repos, courses, books or videos. Other repos can inspire topics. They cannot be a source for text, structure, diagrams or code.
+- A new industry or problem. Every case study targets a different one (see [STYLE.md](STYLE.md#one-industry-or-problem-per-case-study)). The catalog in the README shows what is taken.
 - Plain language for engineers who know the Part 1 basics. If a basic idea needs explaining, link to Part 1 instead.
 - Numbers that come from formulas on the page.
 - Facts that link to primary sources (official docs, standards, original research, reputable reporting).

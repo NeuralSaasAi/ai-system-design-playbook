@@ -17,7 +17,8 @@ FRONT = """---
 title: Customer support agent
 level: advanced
 status: {status}
-category: Conversational and support
+category: Talking to customers
+industry: {industry}
 last_reviewed: 2026-11-14
 ---
 """
@@ -25,9 +26,9 @@ last_reviewed: 2026-11-14
 
 def build(status: str = "reviewed", *, drop: str | None = None, swap: bool = False,
           details: bool = True, extra: str = "", numbers: str = "Cost = tokens x price.",
-          words: int = 0, drop_sub: str | None = None) -> str:
+          words: int = 0, drop_sub: str | None = None, industry: str = "Software (SaaS)") -> str:
     """Build a valid case study, then let a test break one thing."""
-    parts = [FRONT.format(status=status), "# Customer support agent\n"]
+    parts = [FRONT.format(status=status, industry=industry), "# Customer support agent\n"]
     names = list(SECTIONS)
     if swap:
         names[2], names[3] = names[3], names[2]
@@ -100,7 +101,7 @@ def test_missing_front_matter(tmp_path):
     assert any("front matter" in m for m in messages(root))
 
 
-@pytest.mark.parametrize("field", ["title", "level", "status", "category", "last_reviewed"])
+@pytest.mark.parametrize("field", ["title", "level", "status", "category", "industry", "last_reviewed"])
 def test_missing_front_matter_field(tmp_path, field):
     text = "\n".join(
         line for line in build("draft").splitlines() if not line.startswith(f"{field}:")
@@ -162,7 +163,7 @@ def test_numbers_section_needs_a_formula(tmp_path):
 
 
 def test_planned_status_skips_content_rules(tmp_path):
-    root = write_repo(tmp_path, {"01-support.md": FRONT.format(status="planned") + "# T\n"},
+    root = write_repo(tmp_path, {"01-support.md": FRONT.format(status="planned", industry="Retail") + "# T\n"},
                       readme_for("📝"))
     assert messages(root) == []
 
@@ -230,7 +231,7 @@ def test_broken_relative_link(tmp_path):
 
 def test_valid_relative_link(tmp_path):
     files = {"01-support.md": build("draft", extra="See [other](02-other.md)."),
-             "02-other.md": FRONT.format(status="planned") + "# T\n"}
+             "02-other.md": FRONT.format(status="planned", industry="Retail") + "# T\n"}
     readme = readme_for("🚧") + "| 2 | [Other](case-studies/02-other.md) | 📝 |\n"
     root = write_repo(tmp_path, files, readme)
     assert messages(root) == []
@@ -238,7 +239,7 @@ def test_valid_relative_link(tmp_path):
 
 def test_missing_anchor(tmp_path):
     files = {"01-support.md": build("draft", extra="See [x](02-other.md#nope)."),
-             "02-other.md": FRONT.format(status="planned") + "# T\n"}
+             "02-other.md": FRONT.format(status="planned", industry="Retail") + "# T\n"}
     readme = readme_for("🚧") + "| 2 | [Other](case-studies/02-other.md) | 📝 |\n"
     root = write_repo(tmp_path, files, readme)
     assert any("heading anchor" in m for m in messages(root))
@@ -254,6 +255,43 @@ def test_case_study_missing_from_readme(tmp_path):
 def test_catalog_status_mismatch(tmp_path):
     root = write_repo(tmp_path, {"01-support.md": build("draft")}, readme_for("✅"))
     assert any("status" in m and "README" in m for m in messages(root))
+
+
+# ---------- every case study targets a different industry ----------
+
+def test_duplicate_industry_in_case_study_files(tmp_path):
+    files = {"01-a.md": build("draft", industry="Healthcare"),
+             "02-b.md": build("draft", industry="healthcare")}
+    readme = readme_for("🚧", "01-a.md") + "| 2 | [B](case-studies/02-b.md) | 🚧 |\n"
+    root = write_repo(tmp_path, files, readme)
+    assert any("industry" in m and "different" in m for m in messages(root))
+
+
+def test_distinct_industries_pass(tmp_path):
+    files = {"01-a.md": build("draft", industry="Healthcare"),
+             "02-b.md": build("draft", industry="Insurance")}
+    readme = readme_for("🚧", "01-a.md") + "| 2 | [B](case-studies/02-b.md) | 🚧 |\n"
+    root = write_repo(tmp_path, files, readme)
+    assert messages(root) == []
+
+
+def catalog(rows: list[tuple[str, str]]) -> str:
+    out = "# Playbook\n\n| # | Case study | Industry | Problem | Status |\n|---|---|---|---|---|\n"
+    for i, (name, industry) in enumerate(rows, 1):
+        out += f"| {i} | {name} | {industry} | Something | 📝 Planned |\n"
+    return out
+
+
+def test_duplicate_industry_in_readme_catalog(tmp_path):
+    readme = catalog([("Support", "Software (SaaS)"), ("Coding agent", "Software (SaaS)")])
+    root = write_repo(tmp_path, {}, readme)
+    assert any("industry" in m and "different" in m for m in messages(root))
+
+
+def test_distinct_industries_in_readme_catalog_pass(tmp_path):
+    readme = catalog([("Support", "Software (SaaS)"), ("Scribe", "Healthcare")])
+    root = write_repo(tmp_path, {}, readme)
+    assert messages(root) == []
 
 
 def test_template_passes_checker():

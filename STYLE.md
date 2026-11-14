@@ -30,6 +30,12 @@ The checker rejects a section that opens with a table, list or code block (excep
 - **Original writing.** Reference repos, books and courses can inspire which topics we cover. Never copy their text, structure, diagrams or code. Short quotes (under 30 words) are fine when marked and cited.
 - **No promotion.** No course, product, mentoring or affiliate links in case studies. Tools are named because readers will meet them at work.
 
+## One industry or problem per case study
+
+Every case study targets a different industry or problem, so a reader who returns learns something new each time. The front matter field `industry` names it, and the checker fails if two case studies share the same value, or if the README catalog repeats one in its Industry column.
+
+When you propose a case study, say how it differs from the existing ones, in industry, in the problem, and in the main pattern it teaches. Two designs in the same industry are fine only if the problem is clearly different, and then the `industry` value must say so, for example "Healthcare (clinical notes)" and "Healthcare (patient scheduling)".
+
 ## Make it buildable for a newcomer
 
 A reader with little AI background should finish a case study knowing most of what it takes to build the system. Every `## Architecture` section therefore has three sub-sections, and the checker requires them:
@@ -78,14 +84,15 @@ The same files are read on github.com and may be built into a website later. Use
 | Links between pages | Relative paths to `.md` files, for example `02-whatsapp-agent.md` | Absolute website URLs |
 | Everything else | GitHub-flavored markdown: tables, code fences, task lists | Shortcodes, Liquid tags, HTML layouts |
 
-Front matter has five fields:
+Front matter has six fields:
 
 ```yaml
 ---
 title: Customer support agent with human handoff
 level: advanced          # intermediate | advanced
 status: reviewed         # planned | draft | reviewed
-category: Conversational and support
+category: Talking to customers
+industry: Software (SaaS)       # one industry or problem, never shared with another case study
 last_reviewed: 2026-11-14
 ---
 ```
