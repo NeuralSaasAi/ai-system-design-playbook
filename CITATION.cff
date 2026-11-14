@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this playbook, please cite it as below."
+title: "AI System Design Playbook"
+type: dataset
+abstract: "Twenty detailed AI system design case studies in plain English: RAG, agents, voice, cost, scale and failure modes."
+authors:
+  - name: "NeuralSaaS"
+repository-code: "https://github.com/NeuralSaasAi/ai-system-design-playbook"
+license: CC-BY-SA-4.0
+keywords:
+  - ai system design
+  - llm
+  - rag
+  - ai agents
+  - system design interview

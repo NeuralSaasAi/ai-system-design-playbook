@@ -265,7 +265,8 @@ def check_catalog(root: Path, studies: list[tuple[Path, str]]) -> list[Problem]:
     problems: list[Problem] = []
     for path, status in studies:
         needle = f"case-studies/{path.name}"
-        row = next((ln for ln in lines if needle in ln), None)
+        # Only table rows count, so links elsewhere in the README do not shadow the catalog row.
+        row = next((ln for ln in lines if needle in ln and ln.lstrip().startswith("|")), None)
         if row is None:
             problems.append(Problem(Path("README.md"), f"{needle} is not listed in README catalog"))
         elif status in STATUSES and STATUSES[status] not in row:
