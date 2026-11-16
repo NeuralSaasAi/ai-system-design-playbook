@@ -1,0 +1,217 @@
+/* NeuralSaas AI brand, teal edition: teal #0B6E7A and #2DD4BF, lime #D7F657, near-black #080A09 */
+:root {
+  --pb-teal: #0b6e7a;
+  --pb-teal-light: #2dd4bf;
+  --pb-lime: #d7f657;
+  --pb-ink: #080a09;
+}
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #0b6e7a;
+  --md-primary-fg-color--light: #2dd4bf;
+  --md-primary-fg-color--dark: #08545d;
+  --md-accent-fg-color: #0b6e7a;
+  --md-typeset-a-color: #0b6e7a;
+}
+[data-md-color-scheme="slate"] {
+  --md-hue: 175;
+  --md-default-bg-color: #0b1110;
+  --md-default-bg-color--light: #121a19;
+  --md-primary-fg-color: #08201f;
+  --md-primary-bg-color: #f2f7f6;
+  --md-accent-fg-color: var(--pb-lime);
+  --md-typeset-a-color: #2dd4bf;
+}
+.md-header,
+.md-tabs {
+  background: linear-gradient(90deg, #07282c, #0b6e7a);
+  color: #f2f7f6;
+}
+.md-header__button.md-logo img {
+  height: 1.6rem;
+}
+/* Line under each case study title: level, industry, status, review date (added by site_hooks.py) */
+.note-meta {
+  margin-top: -0.6rem;
+  font-size: 0.72rem;
+  color: var(--md-default-fg-color--light);
+}
+.pb-pill {
+  display: inline-block;
+  padding: 0.05rem 0.5rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.pb-industry {
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+}
+.level-intermediate {
+  background: #d6f5ef;
+  color: #0a4d55;
+}
+.level-advanced {
+  background: #cdeaee;
+  color: #07424a;
+}
+.status-draft {
+  background: #fff1c2;
+  color: #6b4a00;
+  border: 1px solid #e8c766;
+}
+.status-reviewed {
+  background: #e6f9b8;
+  color: #2d3a00;
+}
+[data-md-color-scheme="slate"] .level-intermediate,
+[data-md-color-scheme="slate"] .level-advanced {
+  background: rgba(45, 212, 191, 0.16);
+  color: #8ff0e0;
+}
+[data-md-color-scheme="slate"] .status-draft {
+  background: rgba(255, 200, 70, 0.16);
+  color: #ffd877;
+  border-color: rgba(255, 200, 70, 0.5);
+}
+[data-md-color-scheme="slate"] .status-reviewed {
+  background: rgba(215, 246, 87, 0.16);
+  color: var(--pb-lime);
+}
+/* Home hero */
+.pb-hero {
+  background:
+    radial-gradient(60rem 20rem at 85% -10%, rgba(45, 212, 191, 0.4), transparent 60%),
+    radial-gradient(30rem 14rem at 5% 110%, rgba(215, 246, 87, 0.18), transparent 60%),
+    var(--pb-ink);
+  color: #f2f7f6;
+  padding: 3.2rem 0 2.6rem;
+}
+.pb-hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  padding: 0 0.8rem;
+}
+.pb-hero-logo {
+  flex: none;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 1.4rem;
+  box-shadow: 0 8px 28px rgba(45, 212, 191, 0.25);
+}
+.pb-eyebrow {
+  color: var(--pb-lime);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.pb-hero .pb-title {
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  max-width: 36rem;
+  margin: 0.6rem 0 0.8rem;
+}
+.pb-title span {
+  background: linear-gradient(90deg, var(--pb-teal-light), var(--pb-lime));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.pb-lead {
+  max-width: 38rem;
+  font-size: 0.95rem;
+  color: #c6d3d0;
+}
+.pb-actions .md-button {
+  color: #f2f7f6;
+  border-color: rgba(242, 247, 246, 0.4);
+  margin: 0.3rem 0.4rem 0 0;
+}
+.pb-actions .md-button--primary {
+  background: var(--pb-lime);
+  border-color: var(--pb-lime);
+  color: var(--pb-ink);
+}
+.pb-actions .md-button:hover {
+  background: var(--pb-teal);
+  border-color: var(--pb-teal-light);
+  color: #fff;
+}
+/* Case study grid */
+.pb-section {
+  margin: 1.5rem 0 0;
+}
+.pb-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 0.8rem;
+  margin: 0.4rem 0 2rem;
+}
+.pb-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.6rem;
+  color: var(--md-default-fg-color);
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+.pb-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--pb-teal-light);
+  box-shadow: 0 6px 18px rgba(11, 110, 122, 0.22);
+}
+.pb-card-num {
+  font-family: var(--md-code-font-family);
+  font-size: 0.65rem;
+  color: var(--md-typeset-a-color);
+  font-weight: 700;
+}
+.pb-card-title {
+  font-weight: 650;
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+.pb-card-meta {
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+}
+/* Strip linking back to Part 1 */
+.pb-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem 1.5rem;
+  margin: 0 0 2rem;
+  padding: 1rem 1.2rem;
+  border-left: 4px solid var(--pb-lime);
+  border-radius: 0.4rem;
+  background: rgba(45, 212, 191, 0.1);
+  font-size: 0.8rem;
+}
+.pb-strip > div {
+  flex: 1 1 22rem;
+}
+.pb-strip .md-button {
+  margin: 0;
+}
+/* On the home page the hero replaces the README's title, badges and intro paragraphs */
+.pb-home:not(.pb-home-rest) > h1:first-of-type,
+.pb-home:not(.pb-home-rest) > p:nth-of-type(-n + 3) {
+  display: none;
+}
+@media screen and (max-width: 44.9375em) {
+  .pb-hero .pb-title {
+    font-size: 1.6rem;
+  }
+  .pb-hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

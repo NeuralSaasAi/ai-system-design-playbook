@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs><linearGradient id="t" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0B6E7A"/><stop offset="1" stop-color="#2DD4BF"/></linearGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="1280" y2="640" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#10130F"/><stop offset="1" stop-color="#1B2119"/></linearGradient></defs>
+<rect width="1280" height="640" fill="url(#bg)"/>
+<rect x="0" y="0" width="12" height="640" fill="url(#t)"/>
+<g transform="translate(120,208) scale(3.5)"><rect width="64" height="64" rx="15" fill="url(#t)"/><path d="M32 23 V32 M32 32 H18 V41 M32 32 H46 V41" stroke="#FFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="22" y="10" width="20" height="13" rx="3.5" fill="#FFF"/><rect x="8" y="41" width="20" height="13" rx="3.5" fill="#FFF"/><rect x="36" y="41" width="20" height="13" rx="3.5" fill="#FFF"/><circle cx="32" cy="32" r="4.6" fill="#D7F657"/></g>
+<text x="400" y="240" fill="#FFF" font-size="84" font-weight="700">AI System Design</text><text x="400" y="330" fill="#FFF" font-size="84" font-weight="700">Playbook</text><text x="400" y="400" fill="#C9D1C3" font-size="32">20 real-world AI architecture case studies, step by step.</text><text x="400" y="465" fill="#D7F657" font-size="28" font-weight="600">Free and open source · neuralsaasai.com</text>
+</svg>
