@@ -9,7 +9,7 @@
 
 Free, open source, and written for engineers who want to understand how production LLM and agent systems are really built, or who are preparing for an AI system design interview.
 
-**Jump to:** [Pick your path](#pick-your-path) · [Case studies](#case-studies) · [Design method](DESIGN-METHOD.md) · [FAQ](#questions-people-ask) · [Contribute](#contribute)
+**Jump to:** [Website](https://ai-system-design-playbook.neuralsaasai.com/) · [Pick your path](#pick-your-path) · [Case studies](#case-studies) · [Design method](DESIGN-METHOD.md) · [FAQ](#questions-people-ask) · [Contribute](#contribute)
 
 > [!NOTE]
 > **Part 2 of 2.** The [AI Engineering Playbook](https://github.com/NeuralSaasAi/ai-engineering-playbook) (Part 1) teaches the concepts, from zero to intermediate. This playbook (Part 2) shows how those concepts combine into real systems, with scale, trade-offs and failure modes. New to embeddings, RAG or tool calling? Start with Part 1, then come back.
