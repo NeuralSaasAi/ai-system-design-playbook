@@ -1,0 +1,56 @@
+{% extends "main.html" %}
+{#- Home page only: a hero, then the README (pick your path), a grid of all case studies and a
+    link back to Part 1. Nothing here is needed on GitHub; the README stays plain markdown. -#}
+{% block tabs %}
+  {{ super() }}
+  <section class="pb-hero">
+    <div class="md-grid md-typeset pb-hero-inner">
+      <img class="pb-hero-logo" src="{{ 'assets/logo.svg' | url }}" alt="" width="96" height="96">
+      <div>
+        <p class="pb-eyebrow">Free · Open source · Part 2 of 2</p>
+        <h1 class="pb-title">AI system design, <span>worked through on 20 real systems</span>.</h1>
+        <p class="pb-lead">
+          Architecture, scale, cost, failure modes and a 45-minute interview plan for each case study.
+          Written for working engineers and AI system design interview candidates.
+        </p>
+        <p class="pb-actions">
+          <a href="#case-study-grid" class="md-button md-button--primary">Browse case studies</a>
+          <a href="DESIGN-METHOD/" class="md-button">Read the design method</a>
+        </p>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block content %}
+  {#- Split the README at "I want to" so the grid and the Part 1 strip come after "Pick your path" -#}
+  {%- set marker = '<h2 id="i-want-to">' %}
+  {%- set parts = page.content.split(marker, 1) %}
+  {%- set cases = nav.pages | selectattr("meta.number") | sort(attribute="meta.number") | list %}
+  <div class="pb-home">
+    {{ parts[0] }}
+  </div>
+  <section class="pb-section" id="case-study-grid">
+    <h2>All {{ cases | length }} case studies</h2>
+    <div class="pb-cards">
+      {%- for c in cases %}
+        <a class="pb-card" href="{{ c.url | url }}">
+          <span class="pb-card-num">{{ "%02d" | format(c.meta.number) }} · {{ c.meta.category }}</span>
+          <span class="pb-card-title">{{ c.meta.title }}</span>
+          <span class="pb-card-meta">{{ c.meta.industry }}</span>
+        </a>
+      {%- endfor %}
+    </div>
+  </section>
+  <aside class="pb-strip">
+    <div>
+      <strong>New to embeddings, RAG or tool calling?</strong>
+      The case studies assume these basics. The AI Engineering Playbook teaches them from zero, with exercises and projects.
+    </div>
+    <a class="md-button md-button--primary" href="https://ai-engineering.neuralsaasai.com/">Start with the AI Engineering Playbook</a>
+  </aside>
+  {%- if parts | length > 1 %}
+  <div class="pb-home pb-home-rest">
+    {{ marker }}{{ parts[1] }}
+  </div>
+  {%- endif %}
+{% endblock %}
